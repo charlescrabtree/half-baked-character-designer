@@ -45,7 +45,7 @@ bottomDropdown.addEventListener('change', () => {
     // get the value of the bottom dropdown
     const value = bottomDropdown.value;
     // increment the bottom change count state
-    middleCount++;
+    bottomCount++;
     // update the dom for the bottom (NOTE use style.backgroundImage on the bottomEl div instead of trying to set the .src -- it's NOT an img tag!)
     bottomEl.style.backgroundImage = `url('./assets/${value}-pants.png')`;
     // update the stats to show the new count (call displayStats() to do this work)
@@ -56,16 +56,18 @@ catchphraseButton.addEventListener('click', () => {
     // get the value of the catchphrase input
     const newCatchphrase = catchphraseInput.value;
     // push the new catchphrase to the catchphrase array in state
-    catchphrasesEl.push(newCatchphrase);
+    catchphrases.push(newCatchphrase);
     // clear out the form input's value so it's empty to the user
     catchphraseInput.value = '';
     // update the dom to show the new catchphrases (refactor to/call displayCatchphrases to do this work)
     displayCatchphrases();
 });
 
+const catchphrases = [];
+
 function displayStats() {
     // text content of the reportEl to tell the user how many times they've changed each piece of the state
-    reportEl.textContent = `You morphed the head ${headCount}, the middle ${middleCount} and the pants ${bottomCount}. You have also made ${catchphraseCount} catchphrases. And I thought I'd seen everything. Now go save Zootopia.`;
+    reportEl.textContent = `You morphed the head ${headCount} time(s), the middle ${middleCount} time(s) and the pants ${bottomCount} time(s). You have also made ${catchphraseCount} catchphrase(s). And I thought I'd seen everything. Now go save Zootopia.`;
 
 }
 
